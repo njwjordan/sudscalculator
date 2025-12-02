@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SuDS Calculator</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+
+      .vb {
+  height: 60px;
+  font-weight:bold;
+        font-size:0.8em;
+        padding: 2px;
+}
+
+    </style>
+
+
+  </head>
+  <body>
+
+  <section class="section">
+    <div class="container" style="max-width:415px">
+      <h1 class="title">
+        SuDS Calculator
+      </h1>
+      <p class="subtitle">
+        Tool for generating <strong>SuDS data</strong>!
+      </p>
+      <button class="button is-primary is-large" id="back" style="display:none;">Back</button><br />
+      <div id="button-panel">
+
+            <td><button class="button is-fullwidth vb" id="generate-button">GENERATE CODE</button></td>
+
+      </div>
+      
+      <svg id="barcode"></svg>
+      
+      
+
+   
+    </div>
+  </section>
+    <script type="module">
+import jsbarcode from "https://esm.sh/jsbarcode";
+
+
+const bp = document.querySelector("#button-panel");
+const back = document.querySelector("#back");
+const svg = document.querySelector("#barcode");
+
+
+  function generate_code()
+  {
+
+        JsBarcode("#barcode", "CODE", {
+        width:4,
+  height:120,
+    });
+  }
+
+  $("#generate-button").on("click", (event) => {
+    generate_code();
+  });
+
+    generate_code();
+
+    </script>
+  </body>
+</html>
